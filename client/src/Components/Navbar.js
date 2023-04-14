@@ -36,7 +36,7 @@ const Navbar = () => {
       <Container>
         <StyledToolbar>
           <Box>
-            <Logo>Live Notes</Logo>
+            <Logo>ASR Notes</Logo>
           </Box>
           <Box>
             <ActionButton
