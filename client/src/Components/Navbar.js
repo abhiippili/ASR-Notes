@@ -8,6 +8,7 @@ import {
   Box,
   styled
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 //styled components
 const StyledToolbar = styled(Toolbar)({
@@ -21,7 +22,8 @@ const Logo = styled(Typography)({
   color: "white",
   fontFamily: "Poppins",
   fontWeight: 600,
-  fontSize: "1.1em"
+  fontSize: "1.1em",
+  cursor: "pointer"
 });
 
 const ActionButton = styled(Button)({
@@ -31,23 +33,30 @@ const ActionButton = styled(Button)({
 
 //react component
 const Navbar = () => {
+  const navigate = useNavigate();
+
   return (
     <AppBar position="sticky" elevation={0}>
       <Container>
         <StyledToolbar>
           <Box>
-            <Logo>ASR Notes</Logo>
+            <Logo onClick={() => navigate("/")}>Live Notes</Logo>
           </Box>
           <Box>
             <ActionButton
               variant="outlined"
               color="secondary"
+              onClick={() => navigate("/login")}
               sx={{ margin: "1em" }}
             >
-              Sign In
+              LogIn
             </ActionButton>
-            <ActionButton variant="contained" color="secondary">
-              Sign Up
+            <ActionButton
+              variant="contained"
+              color="secondary"
+              onClick={() => navigate("/register")}
+            >
+              Register
             </ActionButton>
           </Box>
         </StyledToolbar>

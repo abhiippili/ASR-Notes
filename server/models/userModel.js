@@ -16,10 +16,18 @@ const userSchema = new mongoose.Schema({
     trim: true,
     validate: [validator.isEmail, "Please provide a valid email address"]
   },
+  username: {
+    type: String,
+    required: [true, "Please provide an username"],
+    trim: true
+  },
+  classes: {
+    type: [String]
+  },
   role: {
     type: String,
-    enum: ["user", "admin"],
-    default: "user"
+    enum: ["student", "teacher", "admin"],
+    default: "student"
   },
   password: {
     type: String,
