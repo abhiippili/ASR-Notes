@@ -3,7 +3,7 @@ const validator = require("validator");
 const bcrpyt = require("bcrypt");
 
 const userSchema = new mongoose.Schema({
-  name: {
+  username: {
     type: String,
     required: [true, "Please provide a name"],
     trim: true
@@ -15,11 +15,6 @@ const userSchema = new mongoose.Schema({
     lowercase: true,
     trim: true,
     validate: [validator.isEmail, "Please provide a valid email address"]
-  },
-  username: {
-    type: String,
-    required: [true, "Please provide an username"],
-    trim: true
   },
   classes: {
     type: [String]

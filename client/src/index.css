@@ -12,3 +12,7 @@
   background: linear-gradient(to top, #f2fcfe, #1c92d2);
   color: white;
 }
+
+input[value=""]:not(:focus) {
+  color: transparent;
+}
