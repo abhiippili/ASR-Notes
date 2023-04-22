@@ -32,7 +32,7 @@ const Register = () => {
     dateOfBirth: "",
     gender: "",
     grade: "",
-    location: "",
+    city: "",
     course: "",
     college: "",
     password: "",
@@ -103,10 +103,60 @@ const Register = () => {
               <MenuItem value={gender}>{gender}</MenuItem>
             ))}
           </TextField>
-          {/* confirm password */}
+
+          {/* city */}
           <TextField
             sx={{ marginBottom: "1rem", marginTop: "0.8rem" }}
+            label="City"
+            name="city"
             fullWidth
+            type="text"
+            variant="standard"
+            color="secondary"
+            value={user.city}
+            onChange={handleInputChange}
+          />
+          {/* course */}
+          <TextField
+            sx={{ marginBottom: "1rem" }}
+            label="Course"
+            name="course"
+            fullWidth
+            type="text"
+            variant="standard"
+            color="secondary"
+            value={user.course}
+            onChange={handleInputChange}
+          />
+          {/* college */}
+          <TextField
+            sx={{ marginBottom: "1rem" }}
+            label="College"
+            name="college"
+            fullWidth
+            type="text"
+            variant="standard"
+            color="secondary"
+            value={user.college}
+            onChange={handleInputChange}
+          />
+          {/* password */}
+          <TextField
+            sx={{ marginBottom: "1rem" }}
+            fullWidth
+            required
+            label="Password"
+            name="password"
+            color="secondary"
+            type="password"
+            variant="standard"
+            onChange={handleInputChange}
+          />
+          {/* confirm password */}
+          <TextField
+            sx={{ marginBottom: "1rem" }}
+            fullWidth
+            required
             label="Confirm Password"
             name="confirmPassword"
             color="secondary"
