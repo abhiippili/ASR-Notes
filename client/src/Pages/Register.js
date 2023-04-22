@@ -1,4 +1,4 @@
-import { Box, Button, Paper, styled, TextField } from "@mui/material";
+import { Box, Button, MenuItem, Paper, styled, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -17,8 +17,13 @@ const Stack = styled(Box)({
 });
 
 const FlexBox = styled(Box)({
-  display: "flex"
+  display: "flex",
+  fontFamily: "Arial",
+  justifyContent: "space-between",
+  margin: "1rem 0rem"
 });
+
+const genders = ["Male", "Female", "Other"];
 
 const Register = () => {
   const [user, setUser] = useState({
@@ -85,33 +90,25 @@ const Register = () => {
             onChange={handleInputChange}
           />
           {/* gender */}
-          <FlexBox>
-            <label style={{ color: "#808080", fontFamily: "Arial" }}>
-              Gender:
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="gender"
-                value="male"
-                onChange={handleInputChange}
-              />
-              Male
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="gender"
-                value="female"
-                onChange={handleInputChange}
-              />
-              Female
-            </label>
-          </FlexBox>
           <TextField
-            sx={{ marginBottom: "1rem" }}
+            select
+            name="gender"
+            label="Gender"
+            value={user.gender}
+            variant="standard"
+            color="secondary"
+            onChange={handleInputChange}
+          >
+            {genders.map((gender) => (
+              <MenuItem value={gender}>{gender}</MenuItem>
+            ))}
+          </TextField>
+          {/* confirm password */}
+          <TextField
+            sx={{ marginBottom: "1rem", marginTop: "0.8rem" }}
             fullWidth
             label="Confirm Password"
+            name="confirmPassword"
             color="secondary"
             type="password"
             variant="standard"
