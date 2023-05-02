@@ -1,13 +1,22 @@
-import { Box, Button, MenuItem, Paper, styled, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  InputAdornment,
+  MenuItem,
+  Paper,
+  styled,
+  TextField
+} from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import EmailIcon from "@mui/icons-material/Email";
 
 const StyledPaper = styled(Paper)({
   margin: "20px auto",
   width: 400,
   padding: "20px 20px",
   borderRadius: "1rem",
-  background: "#E0FFFF"
+  background: "#ffff"
 });
 
 const Stack = styled(Box)({
@@ -18,9 +27,8 @@ const Stack = styled(Box)({
 
 const FlexBox = styled(Box)({
   display: "flex",
-  fontFamily: "Arial",
-  justifyContent: "space-between",
-  margin: "1rem 0rem"
+  alignItems: "center",
+  justifyContent: "space-around"
 });
 
 const genders = ["Male", "Female", "Other"];
@@ -48,21 +56,24 @@ const Register = () => {
   };
   return (
     <div>
-      <StyledPaper elevation={3}>
+      <StyledPaper elevation={8}>
         <Stack component="form" onSubmit={() => navigate("/")}>
           {/* email */}
-          <TextField
-            sx={{ marginBottom: "1rem" }}
-            label="Email"
-            name="email"
-            fullWidth
-            required
-            type="email"
-            variant="standard"
-            color="secondary"
-            value={user.email}
-            onChange={handleInputChange}
-          />
+          <FlexBox>
+            <EmailIcon />
+            <TextField
+              sx={{ marginBottom: "1rem", marginLeft: "0.5rem" }}
+              label="Email"
+              name="email"
+              fullWidth
+              required
+              type="email"
+              variant="standard"
+              color="secondary"
+              value={user.email}
+              onChange={handleInputChange}
+            />
+          </FlexBox>
           {/* username */}
           <TextField
             sx={{ marginBottom: "1rem" }}
