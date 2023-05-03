@@ -21,6 +21,7 @@ import SchoolIcon from "@mui/icons-material/School";
 import PasswordIcon from "@mui/icons-material/Password";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 const CustomStack = styled(Box)({
   display: "flex",
@@ -29,11 +30,12 @@ const CustomStack = styled(Box)({
 });
 
 const StyledPaper = styled(Paper)({
-  margin: "8px",
+  margin: "4rem auto",
   width: 400,
   padding: "12px 12px",
+  // border: "1px solid #032f2c",
   borderRadius: "1rem",
-  background: "#ffff"
+  background: "#fff"
 });
 
 const Stack = styled(Box)({
@@ -45,7 +47,7 @@ const Stack = styled(Box)({
 const FlexBox = styled(Box)({
   display: "flex",
   alignItems: "center",
-  justifyContent: "space-around"
+  justifyContent: "justify-content"
 });
 
 const genders = ["Male", "Female", "Other"];
@@ -71,6 +73,11 @@ const Register = () => {
     setShowPassword((showPassword) => !showPassword);
   };
 
+  const [showConfirmPasword, setConfirmPassword] = useState(false);
+  const handleShowConfirm = () => {
+    setConfirmPassword((showConfirmPasword) => !showConfirmPasword);
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
@@ -81,14 +88,12 @@ const Register = () => {
       <CustomStack>
         <StyledPaper elevation={8}>
           <Stack component="form" onSubmit={() => navigate("/")}>
-            <Typography
-              variant="h6"
-              fontFamily="Poppins"
-              align="center"
-              fontWeight={600}
-            >
-              Register as a student
-            </Typography>
+            <FlexBox sx={{ margin: "1rem auto" }}>
+              <AddCircleIcon sx={{ color: "green" }} fontSize="medium" />
+              <Typography variant="h7" fontFamily="Poppins" fontWeight={600}>
+                Register as a student
+              </Typography>
+            </FlexBox>
             {/* email */}
             <FlexBox>
               <EmailIcon />
@@ -122,7 +127,7 @@ const Register = () => {
               />
             </FlexBox>
             {/* date of birth */}
-            <FlexBox>
+            {/* <FlexBox>
               <CakeIcon />
               <TextField
                 sx={{ marginBottom: "1rem", marginLeft: "0.5rem" }}
@@ -136,10 +141,9 @@ const Register = () => {
                 value={user.dateOfBirth}
                 onChange={handleInputChange}
               />
-            </FlexBox>
+            </FlexBox> */}
             {/* gender */}
-
-            <FlexBox sx={{ alignItems: "flex-end" }}>
+            {/* <FlexBox sx={{ alignItems: "flex-end" }}>
               <MaleIcon />
               <TextField
                 select
@@ -159,7 +163,7 @@ const Register = () => {
             </FlexBox>
 
             {/* city */}
-            <FlexBox sx={{ marginTop: "0.8rem" }}>
+            {/* <FlexBox sx={{ marginTop: "0.8rem" }}>
               <PlaceIcon />
               <TextField
                 sx={{
@@ -177,7 +181,7 @@ const Register = () => {
               />
             </FlexBox>
             {/* course */}
-            <FlexBox>
+            {/* <FlexBox>
               <ClassIcon />
               <TextField
                 sx={{ marginBottom: "1rem", marginLeft: "0.5rem" }}
@@ -190,9 +194,9 @@ const Register = () => {
                 value={user.course}
                 onChange={handleInputChange}
               />
-            </FlexBox>
+            </FlexBox> */}
             {/* college */}
-            <FlexBox>
+            {/* <FlexBox>
               <SchoolIcon />
               <TextField
                 sx={{ marginBottom: "1rem", marginLeft: "0.5rem" }}
@@ -206,7 +210,8 @@ const Register = () => {
                 value={user.college}
                 onChange={handleInputChange}
               />
-            </FlexBox>
+            </FlexBox> */}
+
             {/* password */}
             <FlexBox>
               <PasswordIcon />
@@ -217,10 +222,7 @@ const Register = () => {
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <IconButton
-                        onClick={handleShowPassword}
-                        onMouseDown={(e) => e.preventDefault()}
-                      >
+                      <IconButton onClick={handleShowPassword}>
                         {showPassword ? (
                           <VisibilityOffIcon />
                         ) : (
@@ -235,6 +237,7 @@ const Register = () => {
                 color="secondary"
                 type={showPassword ? "text" : "password"}
                 variant="standard"
+                value={user.password}
                 onChange={handleInputChange}
               />
             </FlexBox>
@@ -248,13 +251,32 @@ const Register = () => {
                 label="Confirm Password"
                 name="confirmPassword"
                 color="secondary"
-                type="password"
+                type={showConfirmPasword ? "text" : "password"}
                 variant="standard"
+                value={user.confirmPassword}
                 onChange={handleInputChange}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton onClick={handleShowConfirm}>
+                        {showConfirmPasword ? (
+                          <VisibilityOffIcon />
+                        ) : (
+                          <VisibilityIcon />
+                        )}
+                      </IconButton>
+                    </InputAdornment>
+                  )
+                }}
               />
             </FlexBox>
-            <Button variant="contained" color="secondary" type="submit">
-              Register
+            <Button
+              variant="contained"
+              color="secondary"
+              type="submit"
+              sx={{ textTransform: "unset", fontFamily: "Poppins" }}
+            >
+              Next
             </Button>
           </Stack>
         </StyledPaper>

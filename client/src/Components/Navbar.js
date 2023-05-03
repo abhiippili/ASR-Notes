@@ -6,7 +6,8 @@ import {
   Typography,
   Button,
   Box,
-  styled
+  styled,
+  stepLabelClasses
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
@@ -16,6 +17,16 @@ const StyledToolbar = styled(Toolbar)({
   width: "100%",
   justifyContent: "space-between",
   alignItems: "center"
+});
+
+const StyledAppBar = styled(AppBar)({
+  // background: " rgb(7,124,115)"
+  // background:
+  //   "linear-gradient(180deg, rgba(7,124,115,1) 0%, rgba(255,255,255,1) 100%)"
+  background: "rgb(3,47,44)",
+  background:
+    "linear-gradient(180deg, rgba(3,47,44,1) 10%, rgba(5,106,99,1) 100%)"
+  //5, 106, 99, 1
 });
 
 const Logo = styled(Typography)({
@@ -28,7 +39,15 @@ const Logo = styled(Typography)({
 
 const ActionButton = styled(Button)({
   fontWeight: 600,
-  fontFamily: "Poppins"
+  fontFamily: "Poppins",
+  color: "black",
+  textTransform: "unset"
+  // border: "2px solid white"
+});
+
+const LoginButton = styled(Button)({
+  fontFamily: "Poppins",
+  fontWeight: 600
 });
 
 //react component
@@ -36,7 +55,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <AppBar position="sticky" elevation={0}>
+    <StyledAppBar position="sticky" elevation={1}>
       <Container>
         <StyledToolbar>
           <Box>
@@ -44,16 +63,16 @@ const Navbar = () => {
           </Box>
           <Box>
             <ActionButton
-              variant="outlined"
-              color="secondary"
+              variant="text"
+              color="info"
               onClick={() => navigate("/login")}
-              sx={{ margin: "1em" }}
+              sx={{ margin: "1em", color: "white" }}
             >
               LogIn
             </ActionButton>
             <ActionButton
               variant="contained"
-              color="secondary"
+              color="info"
               onClick={() => navigate("/register")}
             >
               Register
@@ -61,7 +80,7 @@ const Navbar = () => {
           </Box>
         </StyledToolbar>
       </Container>
-    </AppBar>
+    </StyledAppBar>
   );
 };
 
